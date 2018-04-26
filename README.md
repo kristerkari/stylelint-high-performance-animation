@@ -37,7 +37,7 @@ Add this config to your `.stylelintrc` or stylelint config inside `package.json`
 
 ```css
 div {
-  transition: margin 350ms easy;
+  transition: margin 350ms ease-in;
 }
 /**           ^^^^^^
  * You should not use low performance animation properties */
@@ -63,7 +63,7 @@ The following pattern is considered warning:
 
 ```css
 div {
-  transition: margin-left 350ms easy;
+  transition: margin-left 350ms ease-in;
 }
 ```
 
@@ -71,7 +71,7 @@ The following pattern is _not_ considered warning:
 
 ```css
 div {
-  transition: transform 350ms easy;
+  transition: transform 350ms ease-in;
 }
 ```
 
@@ -91,7 +91,7 @@ The following pattern is considered warning:
 
 ```css
 div {
-  transition: color, margin;
+  transition-property: color, margin;
 }
 ```
 
@@ -99,7 +99,7 @@ The following pattern is _not_ considered warning:
 
 ```css
 div {
-  transition: color, opacity, background-color;
+  transition-property: color, opacity, background-color;
 }
 ```
 
