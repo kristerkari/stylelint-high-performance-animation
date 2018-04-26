@@ -45,7 +45,7 @@ div {
 ```
 
 ```css
-@keyframes {
+@keyframes myAnimation {
   50% {
     top: 5px;
   }
