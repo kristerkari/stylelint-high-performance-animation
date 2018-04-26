@@ -3,6 +3,7 @@
 [![NPM version](https://img.shields.io/npm/v/stylelint-high-performance-animation.svg)](https://www.npmjs.com/package/stylelint-high-performance-animation)
 [![Build Status](https://travis-ci.org/kristerkari/stylelint-high-performance-animation.svg?branch=master)](https://travis-ci.org/kristerkari/stylelint-high-performance-animation)
 [![Build status](https://ci.appveyor.com/api/projects/status/xr64ahlui4cct9ed/branch/master?svg=true)](https://ci.appveyor.com/project/kristerkari/stylelint-high-performance-animation/branch/master)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
 
 Stylelint rule for preventing the use of low performance animation and transition properties.
 
