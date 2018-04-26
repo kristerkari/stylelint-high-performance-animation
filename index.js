@@ -91,7 +91,7 @@ const propsThatCausePaint = [
 ];
 
 const getBlacklist = ignore => {
-  if (ignore === "paint") {
+  if (ignore === "paint-properties") {
     return propsThatCauseLayout;
   }
   return propsThatCauseLayout.concat(propsThatCausePaint);
