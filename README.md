@@ -18,7 +18,7 @@ npm install stylelint-high-performance-animation --save-dev
 or
 
 ```sh
-yarn add stylelint-high-performance-animation --save-dev
+yarn add stylelint-high-performance-animation --dev
 ```
 
 ## Usage
