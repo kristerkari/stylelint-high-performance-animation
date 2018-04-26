@@ -1,0 +1,124 @@
+{
+  "name": "stylelint-high-performance-animation",
+  "version": "1.0.0",
+  "description": "Stylelint rule for preventing the use of low performance animation and transition properties.",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Krister Kari",
+    "url": "https://github.com/kristerkari/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kristerkari/stylelint-high-performance-animation.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kristerkari/stylelint-high-performance-animation/issues"
+  },
+  "homepage": "https://github.com/kristerkari/stylelint-high-performance-animation#readme",
+  "files": [
+    "index.js",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "keywords": [
+    "css",
+    "less",
+    "lint",
+    "linter",
+    "scss",
+    "stylelint",
+    "stylelint-plugin",
+    "sugarss",
+    "performance",
+    "animation",
+    "transition"
+  ],
+  "scripts": {
+    "jest": "jest",
+    "lint": "eslint . --ignore-path .gitignore",
+    "precommit": "lint-staged",
+    "pretest": "npm run lint",
+    "prettify": "prettier --write '**/*.{js,json}'",
+    "release": "npmpub",
+    "test": "jest --coverage"
+  },
+  "peerDependencies": {
+    "stylelint": "^7.0.0 || ^8.0.0 || ^9.0.0"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 6
+    },
+    "env": {
+      "es6": true,
+      "jest": true,
+      "node": true
+    },
+    "plugins": [
+      "sort-requires"
+    ],
+    "globals": {
+      "testRule": true
+    },
+    "rules": {
+      "eqeqeq": "error",
+      "no-use-before-define": [
+        "error",
+        "nofunc"
+      ],
+      "sort-requires/sort-requires": "error",
+      "strict": [
+        "error",
+        "global"
+      ],
+      "arrow-spacing": "error",
+      "no-var": "error",
+      "object-shorthand": "error",
+      "prefer-const": "error",
+      "template-curly-spacing": "error"
+    }
+  },
+  "jest": {
+    "clearMocks": true,
+    "collectCoverage": false,
+    "collectCoverageFrom": [
+      "index.js"
+    ],
+    "coverageDirectory": "./coverage/",
+    "coverageReporters": [
+      "lcov",
+      "text"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 75,
+        "functions": 75,
+        "lines": 75,
+        "statements": 75
+      }
+    },
+    "testEnvironment": "node",
+    "setupFiles": [
+      "./jest-setup.js"
+    ]
+  },
+  "lint-staged": {
+    "**/*.{js,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-plugin-sort-requires": "^2.1.0",
+    "husky": "^0.14.3",
+    "jest-cli": "^22.4.3",
+    "lint-staged": "^7.0.4",
+    "npmpub": "^3.1.0",
+    "prettier": "^1.12.1",
+    "stylelint": "^9.2.0"
+  }
+}
