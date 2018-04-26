@@ -53,6 +53,13 @@ testRule(fn.rule, {
     },
     {
       code: "div { transition-property: cursor; }"
+    },
+    {
+      code: `
+        .test {
+          transition: -webkit-text-stroke-color 2ms linear;
+        }
+      `
     }
   ],
   reject: [
