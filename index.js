@@ -191,6 +191,7 @@ module.exports = stylelint.createPlugin(
             message: messages.rejected("transition", "all"),
             index: declarationValueIndex(decl) + nodes[0].index
           });
+          return;
         }
       }
 
