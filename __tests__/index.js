@@ -64,6 +64,12 @@ testRule(fn.rule, {
   ],
   reject: [
     {
+      code: "div { transition-property: all; }",
+      message: fn.messages.rejected("transition", "all"),
+      line: 1,
+      column: 28
+    },
+    {
       code: "div { transition-property: width; }",
       message: fn.messages.rejected("transition", "width"),
       line: 1,
@@ -72,6 +78,30 @@ testRule(fn.rule, {
     {
       code: "div { transition-property: transform, opacity, width; }",
       message: fn.messages.rejected("transition", "width")
+    },
+    {
+      code: "div { transition: all 0.3s; }",
+      message: fn.messages.rejected("transition", "all"),
+      line: 1,
+      column: 19
+    },
+    {
+      code: "div { transition: 0.3s; }",
+      message: fn.messages.rejected("transition", "all"),
+      line: 1,
+      column: 19
+    },
+    {
+      code: "div { transition: 0.3s 100ms; }",
+      message: fn.messages.rejected("transition", "all"),
+      line: 1,
+      column: 19
+    },
+    {
+      code: "div { transition: 0.3s linear 100ms; }",
+      message: fn.messages.rejected("transition", "all"),
+      line: 1,
+      column: 19
     },
     {
       code: "div { transition: padding 0.3s step-start; }",
@@ -141,7 +171,7 @@ testRule(fn.rule, {
   config: [
     true,
     {
-      ignoreProperties: ["color", "background-color"]
+      ignoreProperties: ["color", "background-color", "all"]
     }
   ],
   accept: [
@@ -150,6 +180,21 @@ testRule(fn.rule, {
     },
     {
       code: "div { transition-property: color; }"
+    },
+    {
+      code: "div { transition-property: all; }"
+    },
+    {
+      code: "div { transition: all 0.2s; }"
+    },
+    {
+      code: "div { transition: 0.3s; }"
+    },
+    {
+      code: "div { transition: 0.3s 100ms; }"
+    },
+    {
+      code: "div { transition: 0.3s linear 100ms; }"
     },
     {
       code: "div { transition-property: background-color, color; }"

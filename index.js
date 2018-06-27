@@ -14,6 +14,27 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
 
 const isString = s => typeof s === "string";
 
+// https://drafts.csswg.org/css-timing/
+const cssLinearTimingFunctions = ["linear"];
+const cssCubicBezierTimingFunctions = [
+  "ease",
+  "ease-in",
+  "ease-out",
+  "ease-in-out",
+  "cubic-bezier"
+];
+const cssStepTimingFunctions = ["step-start", "step-end", "steps"];
+const cssFramesTimingFunctions = ["frames"];
+const cssTimingFunctions = [].concat(
+  cssLinearTimingFunctions,
+  cssCubicBezierTimingFunctions,
+  cssStepTimingFunctions,
+  cssFramesTimingFunctions
+);
+const cssTimingFunctionsRE = new RegExp(
+  "^(" + cssTimingFunctions.join("|") + ").*"
+);
+
 const propsThatCauseLayout = [
   "position",
   "top",
@@ -126,7 +147,7 @@ module.exports = stylelint.createPlugin(
         if (
           node.type === "word" &&
           ignored.indexOf(val) === -1 &&
-          blacklist.indexOf(val) > -1
+          (blacklist.indexOf(val) > -1 || val === "all")
         ) {
           const index = declarationValueIndex(decl) + node.sourceIndex;
           stylelint.utils.report({
@@ -152,10 +173,34 @@ module.exports = stylelint.createPlugin(
         return false;
       });
 
+      if (ignored.indexOf("all") === -1) {
+        const transitionProp = nodes.filter(node => {
+          const isUnit = valueParser.unit(node.value);
+          const isTimingFunction = cssTimingFunctionsRE.test(node.value);
+          if (isUnit || isTimingFunction) {
+            return false;
+          }
+          return node;
+        });
+
+        if (nodes && transitionProp.length === 0) {
+          stylelint.utils.report({
+            ruleName,
+            result,
+            node: decl,
+            message: messages.rejected("transition", "all"),
+            index: declarationValueIndex(decl) + nodes[0].index
+          });
+        }
+      }
+
       for (const prop of nodes) {
         const index = declarationValueIndex(decl) + prop.index;
         const val = postcss.vendor.unprefixed(prop.value);
-        if (ignored.indexOf(val) === -1 && blacklist.indexOf(val) > -1) {
+        if (
+          ignored.indexOf(val) === -1 &&
+          (blacklist.indexOf(val) > -1 || val === "all")
+        ) {
           stylelint.utils.report({
             ruleName,
             result,
