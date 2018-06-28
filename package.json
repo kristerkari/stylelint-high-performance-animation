@@ -1,6 +1,6 @@
 {
   "name": "stylelint-high-performance-animation",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Stylelint rule for preventing the use of low performance animation and transition properties.",
   "main": "index.js",
   "license": "MIT",
