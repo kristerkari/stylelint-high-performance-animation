@@ -104,6 +104,12 @@ testRule(fn.rule, {
       column: 19
     },
     {
+      code: "div { transition: 300ms cubic-bezier(0.25,0.1,0.25,1) .1s; }",
+      message: fn.messages.rejected("transition", "all"),
+      line: 1,
+      column: 19
+    },
+    {
       code: "div { transition: padding 0.3s step-start; }",
       message: fn.messages.rejected("transition", "padding")
     },
@@ -195,6 +201,9 @@ testRule(fn.rule, {
     },
     {
       code: "div { transition: 0.3s linear 100ms; }"
+    },
+    {
+      code: "div { transition: 300ms cubic-bezier(0.25,0.1,0.25,1) .1s; }"
     },
     {
       code: "div { transition-property: background-color, color; }"
