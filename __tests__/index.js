@@ -266,3 +266,20 @@ testRule(fn.rule, {
     }
   ]
 });
+
+testRule(fn.rule, {
+  ruleName: fn.ruleName,
+  skipBasicChecks: true,
+  config: [
+    true,
+    {
+      severity: "error"
+    }
+  ],
+  accept: [
+    {
+      code: "div { transition-property: transform; }",
+      description: "severity as secondary option is supported"
+    }
+  ]
+});
