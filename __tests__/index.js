@@ -60,6 +60,10 @@ testRule(fn.rule, {
           transition: -webkit-text-stroke-color 2ms linear;
         }
       `
+    },
+    {
+      code: "div { transition: var(--sidebar-transition); }",
+      description: "should ignore CSS variables"
     }
   ],
   reject: [
@@ -280,6 +284,40 @@ testRule(fn.rule, {
     {
       code: "div { transition-property: transform; }",
       description: "severity as secondary option is supported"
+    }
+  ]
+});
+
+testRule(fn.rule, {
+  ruleName: fn.ruleName,
+  skipBasicChecks: true,
+  syntax: "scss",
+  config: [true],
+  accept: [
+    {
+      code: "div { transition: $variable; }",
+      description: "should ignore Scss variables"
+    },
+    {
+      code: "div { transition: ($variable + $variable); }",
+      description: "should ignore Scss list"
+    }
+  ]
+});
+
+testRule(fn.rule, {
+  ruleName: fn.ruleName,
+  skipBasicChecks: true,
+  syntax: "less",
+  config: [true],
+  accept: [
+    {
+      code: "div { transition: @variable; }",
+      description: "should ignore LESS variables"
+    },
+    {
+      code: "div { transition: (@variable + @variable); }",
+      description: "should ignore LESS list"
     }
   ]
 });
