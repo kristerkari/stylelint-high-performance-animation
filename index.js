@@ -165,7 +165,7 @@ module.exports = stylelint.createPlugin(
       const nodes = [];
 
       valueParser(decl.value).walk(node => {
-        if (node.type === "word")
+        if (node.type === "word" || node.type === "function")
           nodes.push({
             index: node.sourceIndex,
             value: node.value
