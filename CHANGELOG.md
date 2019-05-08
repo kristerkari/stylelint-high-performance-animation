@@ -1,3 +1,7 @@
+## v1.2.1
+
+- Fixed: the plugin was crashing when CSS variable was used as the transition value.
+
 ## v1.2.0
 
 - Added: support for stylelint version 10.
