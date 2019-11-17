@@ -183,7 +183,7 @@ module.exports = stylelint.createPlugin(
           return node;
         });
 
-        if (nodes && transitionProp.length === 0) {
+        if (nodes && nodes.length > 0 && transitionProp.length === 0) {
           stylelint.utils.report({
             ruleName,
             result,
