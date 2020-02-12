@@ -3,12 +3,10 @@ sudo: false
 git:
   depth: 1
 cache:
-  directories:
-    - $HOME/.npm
-    - node_modules
+  yarn: true
 matrix:
   include:
-    - node_js: "11"
+    - node_js: "12"
       script: npm run jest -- --runInBand
       env: CI=tests 11
     - node_js: "10"
