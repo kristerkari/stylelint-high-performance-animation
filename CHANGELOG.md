@@ -1,3 +1,7 @@
+## v1.5.1
+
+- Fixed: `transition` property without a value throwing an error.
+
 ## v1.5.0
 
 - Added: support for stylelint version 13.
