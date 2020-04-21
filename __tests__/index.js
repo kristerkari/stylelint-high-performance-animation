@@ -64,6 +64,10 @@ testRule(fn.rule, {
     {
       code: "div { transition: var(--sidebar-transition); }",
       description: "should ignore CSS variables"
+    },
+    {
+      code: "div { transition: }",
+      description: "does not crash with an empty transition value"
     }
   ],
   reject: [
