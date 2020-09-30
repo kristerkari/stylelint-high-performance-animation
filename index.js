@@ -1,7 +1,6 @@
 "use strict";
 
 const declarationValueIndex = require("stylelint/lib/utils/declarationValueIndex");
-const postcss = require("postcss");
 const stylelint = require("stylelint");
 const valueParser = require("postcss-value-parser");
 
@@ -118,6 +117,20 @@ const getBlacklist = ignore => {
   return propsThatCauseLayout.concat(propsThatCausePaint);
 };
 
+/**
+ * Returns the input string stripped of its vendor prefix.
+ *
+ * @param {string} prop String with or without vendor prefix.
+ *
+ * @return {string} String name without vendor prefixes.
+ *
+ * @example
+ * unprefixed('-moz-tab-size') //=> 'tab-size'
+ */
+const unprefixed = prop => {
+  return prop.replace(/^-\w+-/, "");
+};
+
 module.exports = stylelint.createPlugin(
   ruleName,
   (actual, options) => (cssRoot, result) => {
@@ -143,7 +156,7 @@ module.exports = stylelint.createPlugin(
 
     cssRoot.walkDecls("transition-property", decl => {
       valueParser(decl.value).walk(node => {
-        const val = postcss.vendor.unprefixed(node.value);
+        const val = unprefixed(node.value);
         if (
           node.type === "word" &&
           ignored.indexOf(val) === -1 &&
@@ -197,7 +210,7 @@ module.exports = stylelint.createPlugin(
 
       for (const prop of nodes) {
         const index = declarationValueIndex(decl) + prop.index;
-        const val = postcss.vendor.unprefixed(prop.value);
+        const val = unprefixed(prop.value);
         if (
           ignored.indexOf(val) === -1 &&
           (blacklist.indexOf(val) > -1 || val === "all")
@@ -215,7 +228,7 @@ module.exports = stylelint.createPlugin(
 
     cssRoot.walkAtRules(/^keyframes$/i, atRuleKeyframes => {
       atRuleKeyframes.walkDecls(decl => {
-        const val = postcss.vendor.unprefixed(decl.prop);
+        const val = unprefixed(decl.prop);
         if (ignored.indexOf(val) === -1 && blacklist.indexOf(val) > -1) {
           stylelint.utils.report({
             ruleName,
