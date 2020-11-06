@@ -1,3 +1,7 @@
+## v1.5.2
+
+- Fixed: support with PostCSS version 8.
+
 ## v1.5.1
 
 - Fixed: `transition` property without a value throwing an error.
