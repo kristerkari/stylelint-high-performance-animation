@@ -1,8 +1,7 @@
 # stylelint-high-performance-animation
 
 [![NPM version](https://img.shields.io/npm/v/stylelint-high-performance-animation.svg)](https://www.npmjs.com/package/stylelint-high-performance-animation)
-[![Build Status](https://travis-ci.org/kristerkari/stylelint-high-performance-animation.svg?branch=master)](https://travis-ci.org/kristerkari/stylelint-high-performance-animation)
-[![Build status](https://ci.appveyor.com/api/projects/status/xr64ahlui4cct9ed/branch/master?svg=true)](https://ci.appveyor.com/project/kristerkari/stylelint-high-performance-animation/branch/master)
+[![Build Status](https://github.com/kristerkari/stylelint-high-performance-animation/workflows/Tests/badge.svg)](https://github.com/kristerkari/stylelint-high-performance-animation/actions?workflow=Tests)
 [![Downloads per month](https://img.shields.io/npm/dm/stylelint-high-performance-animation.svg)](http://npmcharts.com/compare/stylelint-high-performance-animation?periodLength=30)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
 
