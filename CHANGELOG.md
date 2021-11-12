@@ -1,3 +1,7 @@
+## v1.6.0
+
+- Added: support for stylelint version 14.
+
 ## v1.5.2
 
 - Fixed: support with PostCSS version 8.
