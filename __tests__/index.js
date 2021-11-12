@@ -295,7 +295,7 @@ testRule(fn.rule, {
 testRule(fn.rule, {
   ruleName: fn.ruleName,
   skipBasicChecks: true,
-  syntax: "scss",
+  customSyntax: "postcss-scss",
   config: [true],
   accept: [
     {
@@ -312,7 +312,7 @@ testRule(fn.rule, {
 testRule(fn.rule, {
   ruleName: fn.ruleName,
   skipBasicChecks: true,
-  syntax: "less",
+  customSyntax: "postcss-less",
   config: [true],
   accept: [
     {
