@@ -2,7 +2,7 @@
 
 const fn = require("../");
 
-testRule(fn.rule, {
+testRule({
   ruleName: fn.ruleName,
   skipBasicChecks: true,
   config: [true],
@@ -123,9 +123,19 @@ testRule(fn.rule, {
     },
     {
       code: "div { transition: 350ms width, padding 150ms; }",
-      message: fn.messages.rejected("transition", "width"),
-      line: 1,
-      column: 25
+      warnings: [
+        {
+          message: fn.messages.rejected("transition", "width"),
+          line: 1,
+          column: 25
+        },
+        {
+          message: fn.messages.rejected("transition", "padding"),
+          line: 1,
+          column: 32
+        }
+      ]
+
     },
     {
       code:
@@ -179,7 +189,7 @@ div {
   ]
 });
 
-testRule(fn.rule, {
+testRule({
   ruleName: fn.ruleName,
   skipBasicChecks: true,
   config: [
@@ -236,7 +246,7 @@ testRule(fn.rule, {
   ]
 });
 
-testRule(fn.rule, {
+testRule({
   ruleName: fn.ruleName,
   skipBasicChecks: true,
   config: [
@@ -275,7 +285,7 @@ testRule(fn.rule, {
   ]
 });
 
-testRule(fn.rule, {
+testRule({
   ruleName: fn.ruleName,
   skipBasicChecks: true,
   config: [
@@ -292,7 +302,7 @@ testRule(fn.rule, {
   ]
 });
 
-testRule(fn.rule, {
+testRule({
   ruleName: fn.ruleName,
   skipBasicChecks: true,
   customSyntax: "postcss-scss",
@@ -309,7 +319,7 @@ testRule(fn.rule, {
   ]
 });
 
-testRule(fn.rule, {
+testRule({
   ruleName: fn.ruleName,
   skipBasicChecks: true,
   customSyntax: "postcss-less",
