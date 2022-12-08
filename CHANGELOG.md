@@ -1,3 +1,7 @@
+## v1.7.0
+
+- Added: `postcss-value-parser` to dependencies.
+
 ## v1.6.0
 
 - Added: support for stylelint version 14.
