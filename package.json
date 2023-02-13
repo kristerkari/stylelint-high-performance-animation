@@ -120,7 +120,7 @@
     "lint-staged": "^13.1.1",
     "np": "^7.6.3",
     "postcss": "^8.4.21",
-    "postcss-less": "^5.0.0",
+    "postcss-less": "^6.0.0",
     "postcss-scss": "^4.0.2",
     "prettier": "^2.3.2",
     "stylelint": "^14.0.1"
