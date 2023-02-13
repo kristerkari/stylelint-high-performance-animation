@@ -40,7 +40,7 @@
     "precommit": "lint-staged",
     "pretest": "npm run lint",
     "prettify": "prettier --write '**/*.{js,json}'",
-    "release": "npmpub",
+    "release": "np",
     "test": "jest --coverage"
   },
   "peerDependencies": {
@@ -118,7 +118,7 @@
     "jest": "^29.4.2",
     "jest-preset-stylelint": "^6.0.0",
     "lint-staged": "^13.1.1",
-    "npmpub": "^5.0.0",
+    "np": "^7.6.3",
     "postcss": "^8.4.21",
     "postcss-less": "^5.0.0",
     "postcss-scss": "^4.0.2",
