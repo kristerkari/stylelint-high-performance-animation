@@ -112,7 +112,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.31.0",
+    "eslint": "^8.34.0",
     "eslint-plugin-sort-requires": "^2.1.0",
     "husky": "^7.0.1",
     "jest-cli": "^27.0.6",
