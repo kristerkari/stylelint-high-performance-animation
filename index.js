@@ -8,10 +8,10 @@ const ruleName = "plugin/no-low-performance-animation-properties";
 
 const messages = stylelint.utils.ruleMessages(ruleName, {
   rejected: (type, prop) =>
-    `Unexpected use of low performance ${type} property (${prop}).`
+    `Unexpected use of low performance ${type} property (${prop}).`,
 });
 
-const isString = s => typeof s === "string";
+const isString = (s) => typeof s === "string";
 
 // https://drafts.csswg.org/css-timing/
 const cssLinearTimingFunctions = ["linear"];
@@ -20,7 +20,7 @@ const cssCubicBezierTimingFunctions = [
   "ease-in",
   "ease-out",
   "ease-in-out",
-  "cubic-bezier"
+  "cubic-bezier",
 ];
 const cssStepTimingFunctions = ["step-start", "step-end", "steps"];
 const cssFramesTimingFunctions = ["frames"];
@@ -87,7 +87,7 @@ const propsThatCauseLayout = [
   "word-wrap",
   "letter-spacing",
   "appearance",
-  "direction"
+  "direction",
 ];
 
 const propsThatCausePaint = [
@@ -107,10 +107,10 @@ const propsThatCausePaint = [
   "outline-style",
   "outline-width",
   "outline-color",
-  "box-shadow"
+  "box-shadow",
 ];
 
-const getBlacklist = ignore => {
+const getBlacklist = (ignore) => {
   if (ignore === "paint-properties") {
     return propsThatCauseLayout;
   }
@@ -127,7 +127,7 @@ const getBlacklist = ignore => {
  * @example
  * unprefixed('-moz-tab-size') //=> 'tab-size'
  */
-const unprefixed = prop => {
+const unprefixed = (prop) => {
   return prop.replace(/^-\w+-/, "");
 };
 
@@ -142,9 +142,9 @@ module.exports = stylelint.createPlugin(
         actual: options,
         possible: {
           ignore: ["paint-properties"],
-          ignoreProperties: [isString]
+          ignoreProperties: [isString],
         },
-        optional: true
+        optional: true,
       }
     );
 
@@ -154,8 +154,8 @@ module.exports = stylelint.createPlugin(
     const ignored =
       options && options.ignoreProperties ? options.ignoreProperties : [];
 
-    cssRoot.walkDecls("transition-property", decl => {
-      valueParser(decl.value).walk(node => {
+    cssRoot.walkDecls("transition-property", (decl) => {
+      valueParser(decl.value).walk((node) => {
         const val = unprefixed(node.value);
         if (
           node.type === "word" &&
@@ -168,26 +168,26 @@ module.exports = stylelint.createPlugin(
             result,
             node: decl,
             message: messages.rejected("transition", node.value),
-            index
+            index,
           });
         }
       });
     });
 
-    cssRoot.walkDecls("transition", decl => {
+    cssRoot.walkDecls("transition", (decl) => {
       const nodes = [];
 
-      valueParser(decl.value).walk(node => {
+      valueParser(decl.value).walk((node) => {
         if (node.type === "word" || node.type === "function")
           nodes.push({
             index: node.sourceIndex,
-            value: node.value
+            value: node.value,
           });
         return false;
       });
 
       if (ignored.indexOf("all") === -1) {
-        const transitionProp = nodes.filter(node => {
+        const transitionProp = nodes.filter((node) => {
           const isUnit = valueParser.unit(node.value);
           const isTimingFunction = cssTimingFunctionsRE.test(node.value);
           if (isUnit || isTimingFunction) {
@@ -202,7 +202,7 @@ module.exports = stylelint.createPlugin(
             result,
             node: decl,
             message: messages.rejected("transition", "all"),
-            index: declarationValueIndex(decl) + nodes[0].index
+            index: declarationValueIndex(decl) + nodes[0].index,
           });
           return;
         }
@@ -220,21 +220,21 @@ module.exports = stylelint.createPlugin(
             result,
             node: decl,
             message: messages.rejected("transition", prop.value),
-            index
+            index,
           });
         }
       }
     });
 
-    cssRoot.walkAtRules(/^keyframes$/i, atRuleKeyframes => {
-      atRuleKeyframes.walkDecls(decl => {
+    cssRoot.walkAtRules(/^keyframes$/i, (atRuleKeyframes) => {
+      atRuleKeyframes.walkDecls((decl) => {
         const val = unprefixed(decl.prop);
         if (ignored.indexOf(val) === -1 && blacklist.indexOf(val) > -1) {
           stylelint.utils.report({
             ruleName,
             result,
             node: decl,
-            message: messages.rejected("animation", decl.prop)
+            message: messages.rejected("animation", decl.prop),
           });
         }
       });
