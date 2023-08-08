@@ -1,3 +1,7 @@
+## v1.9.0
+
+- Added: support for CSS logical properties (#36, #120). 
+
 ## v1.8.0
 
 - Added: support for stylelint version 15.
