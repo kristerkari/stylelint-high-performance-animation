@@ -49,7 +49,7 @@
   "eslintConfig": {
     "extends": "eslint:recommended",
     "parserOptions": {
-      "ecmaVersion": 6
+      "ecmaVersion": "latest"
     },
     "env": {
       "es6": true,
