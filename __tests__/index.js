@@ -83,8 +83,18 @@ testRule({
       column: 28,
     },
     {
+      code: "div { transition-property: inline-size; }",
+      message: fn.messages.rejected("transition", "inline-size"),
+      line: 1,
+      column: 28,
+    },
+    {
       code: "div { transition-property: transform, opacity, width; }",
       message: fn.messages.rejected("transition", "width"),
+    },
+    {
+      code: "div { transition-property: transform, opacity, inline-size; }",
+      message: fn.messages.rejected("transition", "inline-size"),
     },
     {
       code: "div { transition: all 0.3s; }",
@@ -136,6 +146,21 @@ testRule({
       ],
     },
     {
+      code: "div { transition: 350ms inline-size, padding 150ms; }",
+      warnings: [
+        {
+          message: fn.messages.rejected("transition", "inline-size"),
+          line: 1,
+          column: 25,
+        },
+        {
+          message: fn.messages.rejected("transition", "padding"),
+          line: 1,
+          column: 38,
+        },
+      ],
+    },
+    {
       code: "div { transition: opacity 350ms easy-in 100ms, transform 350ms linear 200ms, padding 200ms ease-out; }",
       message: fn.messages.rejected("transition", "padding"),
     },
@@ -173,7 +198,15 @@ div {
       line: 3,
       column: 9,
     },
-
+    {
+      code: `
+@keyframes test{
+  50% { inset-block-start: 1px; }
+}`,
+      message: fn.messages.rejected("animation", "inset-block-start"),
+      line: 3,
+      column: 9,
+    },
     {
       code: `
 @keyframes foo {
