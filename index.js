@@ -28,10 +28,10 @@ const cssTimingFunctions = [].concat(
   cssLinearTimingFunctions,
   cssCubicBezierTimingFunctions,
   cssStepTimingFunctions,
-  cssFramesTimingFunctions
+  cssFramesTimingFunctions,
 );
 const cssTimingFunctionsRE = new RegExp(
-  "^(" + cssTimingFunctions.join("|") + ").*"
+  "^(" + cssTimingFunctions.join("|") + ").*",
 );
 
 const propsThatCauseLayout = [
@@ -165,7 +165,7 @@ module.exports = stylelint.createPlugin(
           ignoreProperties: [isString],
         },
         optional: true,
-      }
+      },
     );
 
     if (!validOptions) return;
@@ -259,7 +259,7 @@ module.exports = stylelint.createPlugin(
         }
       });
     });
-  }
+  },
 );
 
 module.exports.ruleName = ruleName;
