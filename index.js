@@ -1,6 +1,6 @@
 "use strict";
 
-const declarationValueIndex = require("stylelint/lib/utils/declarationValueIndex");
+const declarationValueIndex = require("./utils/declarationValueIndex");
 const stylelint = require("stylelint");
 const valueParser = require("postcss-value-parser");
 
