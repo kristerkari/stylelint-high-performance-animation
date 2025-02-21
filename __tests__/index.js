@@ -222,6 +222,19 @@ div {
     },
     {
       code: `
+      .widget {
+        transition: 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+      }
+      .other {
+        transition-property: transform, opacity;
+      }
+      `,
+      message: fn.messages.rejected("transition", "all"),
+      line: 3,
+      column: 21,
+    },
+    {
+      code: `
 @keyframes test{
   50% { top: 1px; }
 }`,
