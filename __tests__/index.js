@@ -45,7 +45,7 @@ testRule({
       code: "@keyframes test {0% { opacity: 0 } 100% {opacity: 1}}",
     },
     {
-      code: "div { transition-property: -webkit-transform; }",
+      code: "div { transition-property: -webkit-transform; }",
     },
     {
       code: "div { transition-property: -webkit-text-stroke-color; }",
@@ -67,6 +67,26 @@ testRule({
     {
       code: "div { transition: }",
       description: "does not crash with an empty transition value",
+    },
+    {
+      code: `
+      .widget {
+        transition: 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+        transition-property: transform, opacity;
+      }
+      `,
+      description: "Overwriting 'transition-property'. Issue #216",
+    },
+    {
+      code: `
+      .widget {
+        transition: 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+        margin: 0;
+        font-size: 18px;
+        transition-property: transform, opacity;
+      }
+      `,
+      description: "Overwriting 'transition-property'. Issue #216",
     },
   ],
   reject: [
@@ -191,6 +211,17 @@ div {
     },
     {
       code: `
+      .widget {
+        transition: 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+        transition-property: transform, opacity, visibility;
+      }
+      `,
+      message: fn.messages.rejected("transition", "visibility"),
+      line: 4,
+      column: 50,
+    },
+    {
+      code: `
 @keyframes test{
   50% { top: 1px; }
 }`,
@@ -297,6 +328,26 @@ testRule({
     },
     {
       code: "@keyframes test {0% { color: black } 100% {color: white}}",
+    },
+    {
+      code: `
+      .widget {
+        transition: 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+        transition-property: transform, opacity, visibility;
+      }
+      `,
+      description: "Overwriting 'transition-property'. Issue #216",
+    },
+    {
+      code: `
+      .widget {
+        transition: 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+        margin: 0;
+        font-size: 18px;
+        transition-property: transform, opacity, visibility;
+      }
+      `,
+      description: "Overwriting 'transition-property'. Issue #216",
     },
   ],
   reject: [
