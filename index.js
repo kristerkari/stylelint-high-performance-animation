@@ -197,6 +197,15 @@ module.exports = stylelint.createPlugin(
     });
 
     cssRoot.walkDecls("transition", (decl) => {
+      let next = decl.next();
+
+      while (next) {
+        if (next.prop && next.prop === "transition-property") {
+          return;
+        }
+        next = next.next();
+      }
+
       const nodes = [];
 
       valueParser(decl.value).walk((node) => {
