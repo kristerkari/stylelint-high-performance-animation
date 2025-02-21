@@ -1,10 +1,15 @@
+## v1.11.0
+
+- Fixed: allow overwriting `transition` with `transition-property` (#233).
+- Fixed: stylelint 16.13.0+ deprecation warning (#229).
+
 ## v1.10.0
 
 - Added: support for stylelint version 16.
 
 ## v1.9.0
 
-- Added: support for CSS logical properties (#36, #120). 
+- Added: support for CSS logical properties (#36, #120).
 
 ## v1.8.0
 
