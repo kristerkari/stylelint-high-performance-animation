@@ -27,8 +27,10 @@ const cssTimingFunctions = [].concat(
   cssStepTimingFunctions,
   cssFramesTimingFunctions,
 );
+
 const cssTimingFunctionsRE = new RegExp(
-  "^(" + cssTimingFunctions.join("|") + ").*",
+  // eslint-disable-next-line regexp/no-dupe-disjunctions
+  `^${cssTimingFunctions.join("|")}.*`,
 );
 
 const propsThatCauseLayout = [
@@ -131,6 +133,7 @@ const getBlacklist = (ignore) => {
   if (ignore === "paint-properties") {
     return propsThatCauseLayout;
   }
+
   return propsThatCauseLayout.concat(propsThatCausePaint);
 };
 
@@ -174,6 +177,7 @@ const plugin = stylelint.createPlugin(
     cssRoot.walkDecls("transition-property", (decl) => {
       valueParser(decl.value).walk((node) => {
         const val = unprefixed(node.value);
+
         if (
           node.type === "word" &&
           ignored.indexOf(val) === -1 &&
@@ -181,6 +185,7 @@ const plugin = stylelint.createPlugin(
         ) {
           const index = declarationValueIndex(decl) + node.sourceIndex;
           const endIndex = index + node.value.length;
+
           stylelint.utils.report({
             ruleName,
             result,
@@ -200,6 +205,7 @@ const plugin = stylelint.createPlugin(
         if (next.prop && next.prop === "transition-property") {
           return;
         }
+
         next = next.next();
       }
 
@@ -211,6 +217,7 @@ const plugin = stylelint.createPlugin(
             index: node.sourceIndex,
             value: node.value,
           });
+
         return false;
       });
 
@@ -218,15 +225,18 @@ const plugin = stylelint.createPlugin(
         const transitionProp = nodes.filter((node) => {
           const isUnit = valueParser.unit(node.value);
           const isTimingFunction = cssTimingFunctionsRE.test(node.value);
+
           if (isUnit || isTimingFunction) {
             return false;
           }
+
           return node;
         });
 
         if (nodes.length && transitionProp.length === 0) {
           const index = declarationValueIndex(decl) + nodes[0].index;
           const endIndex = index + nodes[0].value.length;
+
           stylelint.utils.report({
             ruleName,
             result,
@@ -235,6 +245,7 @@ const plugin = stylelint.createPlugin(
             index,
             endIndex,
           });
+
           return;
         }
       }
@@ -243,6 +254,7 @@ const plugin = stylelint.createPlugin(
         const index = declarationValueIndex(decl) + prop.index;
         const endIndex = index + prop.value.length;
         const val = unprefixed(prop.value);
+
         if (
           ignored.indexOf(val) === -1 &&
           (blacklist.indexOf(val) > -1 || val === "all")
@@ -262,6 +274,7 @@ const plugin = stylelint.createPlugin(
     cssRoot.walkAtRules(/^keyframes$/i, (atRuleKeyframes) => {
       atRuleKeyframes.walkDecls((decl) => {
         const val = unprefixed(decl.prop);
+
         if (ignored.indexOf(val) === -1 && blacklist.indexOf(val) > -1) {
           stylelint.utils.report({
             ruleName,
