@@ -1,3 +1,7 @@
+## Unreleased
+
+- Changed: Migrated repository to ESM.
+
 ## v1.11.0
 
 - Fixed: allow overwriting `transition` with `transition-property` (#233).

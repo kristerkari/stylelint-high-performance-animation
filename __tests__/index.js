@@ -1,6 +1,4 @@
-"use strict";
-
-const fn = require("../");
+import * as fn from "../index.js";
 
 testRule({
   ruleName: fn.ruleName,

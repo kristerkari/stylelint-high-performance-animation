@@ -1,6 +1,7 @@
 {
   "name": "stylelint-high-performance-animation",
   "version": "1.11.0",
+  "type": "module",
   "description": "Stylelint rule for preventing the use of low performance animation and transition properties.",
   "main": "index.js",
   "license": "MIT",
@@ -50,7 +51,8 @@
   "eslintConfig": {
     "extends": "eslint:recommended",
     "parserOptions": {
-      "ecmaVersion": "latest"
+      "ecmaVersion": "latest",
+      "sourceType": "module"
     },
     "env": {
       "es6": true,
