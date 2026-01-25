@@ -38,7 +38,7 @@
   "type": "module",
   "scripts": {
     "jest": "cross-env NODE_OPTIONS=\"--experimental-vm-modules --no-warnings\" jest",
-    "lint": "eslint . --ignore-path .gitignore",
+    "lint": "eslint .",
     "precommit": "lint-staged",
     "pretest": "npm run lint",
     "prettify": "prettier --write '**/*.{js,json}'",
@@ -47,41 +47,6 @@
   },
   "peerDependencies": {
     "stylelint": "^17.0.0"
-  },
-  "eslintConfig": {
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": "latest",
-      "sourceType": "module"
-    },
-    "env": {
-      "es6": true,
-      "jest": true,
-      "node": true
-    },
-    "plugins": [
-      "sort-requires"
-    ],
-    "globals": {
-      "testRule": true
-    },
-    "rules": {
-      "eqeqeq": "error",
-      "no-use-before-define": [
-        "error",
-        "nofunc"
-      ],
-      "sort-requires/sort-requires": "error",
-      "strict": [
-        "error",
-        "global"
-      ],
-      "arrow-spacing": "error",
-      "no-var": "error",
-      "object-shorthand": "error",
-      "prefer-const": "error",
-      "template-curly-spacing": "error"
-    }
   },
   "jest": {
     "clearMocks": true,
@@ -116,7 +81,7 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "cross-env": "^10.1.0",
-    "eslint": "^8.34.0",
+    "eslint": "^9.0.0",
     "eslint-plugin-sort-requires": "^2.1.0",
     "husky": "^9.1.7",
     "jest": "^30.2.0",
