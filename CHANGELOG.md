@@ -1,3 +1,8 @@
+## Unreleased
+
+- Breaking: Migrated repository to ESM.
+- Removed: dropped support for stylelint versions older than 17.
+
 ## v1.11.0
 
 - Fixed: allow overwriting `transition` with `transition-property` (#233).

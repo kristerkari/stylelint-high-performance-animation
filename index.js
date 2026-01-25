@@ -1,9 +1,6 @@
-"use strict";
-
-const declarationValueIndex = require("./utils/declarationValueIndex");
-const stylelint = require("stylelint");
-const valueParser = require("postcss-value-parser");
-
+import declarationValueIndex from "./utils/declarationValueIndex.js";
+import stylelint from "stylelint";
+import valueParser from "postcss-value-parser";
 const ruleName = "plugin/no-low-performance-animation-properties";
 
 const messages = stylelint.utils.ruleMessages(ruleName, {
@@ -151,7 +148,7 @@ const unprefixed = (prop) => {
   return prop.replace(/^-\w+-/, "");
 };
 
-module.exports = stylelint.createPlugin(
+const plugin = stylelint.createPlugin(
   ruleName,
   (actual, options) => (cssRoot, result) => {
     const validOptions = stylelint.utils.validateOptions(
@@ -278,5 +275,5 @@ module.exports = stylelint.createPlugin(
   },
 );
 
-module.exports.ruleName = ruleName;
-module.exports.messages = messages;
+export default plugin;
+export { ruleName, messages };
