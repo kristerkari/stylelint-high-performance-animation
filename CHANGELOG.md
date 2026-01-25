@@ -1,6 +1,7 @@
-## Unreleased
+## v2.0.0
 
-- Breaking: Migrated repository to ESM.
+- Breaking: Migrated plugin to ESM.
+- Added: support for stylelint version 17.
 - Removed: dropped support for stylelint versions older than 17.
 
 ## v1.11.0
