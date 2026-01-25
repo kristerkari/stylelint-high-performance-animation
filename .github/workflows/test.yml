@@ -20,13 +20,13 @@ jobs:
       - name: Setup Node.js (latest LTS)
         uses: actions/setup-node@v3
         with:
-          node-version: 'lts/*'
+          node-version: "lts/*"
 
-      - name: Install npm dependencies
-        run: yarn install
+      - name: Install dependencies
+        run: npm ci
 
       - name: Lint
-        run: yarn lint
+        run: npm run lint
 
-      - name: Run jest tests with coverage
-        run: yarn jest --runInBand --coverage
+      - name: Run tests with coverage
+        run: npm test -- --runInBand --coverage
