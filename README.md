@@ -106,7 +106,7 @@ div {
 
 ## Dependencies
 
-This plugin has only [stylelint](https://github.com/stylelint/stylelint) as a dependency.
+This plugin depends on [stylelint](https://github.com/stylelint/stylelint) and `postcss-value-parser`.
 
 ---
 
