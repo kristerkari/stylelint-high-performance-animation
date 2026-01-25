@@ -1,6 +1,7 @@
 ## Unreleased
 
-- Changed: Migrated repository to ESM.
+- Breaking: Migrated repository to ESM.
+- Removed: dropped support for stylelint versions older than 17.
 
 ## v1.11.0
 
